@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha Sri A | AI Researcher & PhD Candidate</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- KaTeX for LaTeX Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb;
+            background-color: #0d121c; /* Base dark color fallback */
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* VIDEO BACKGROUND STYLES */
+        /* ------------------------------------------------------------------ */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -100;
+            filter: brightness(0.4) grayscale(0.2);
+        }
+        
+        /* ------------------------------------------------------------------ */
+        /* OVERLAY BACKGROUND STYLES (STARS & NEBULA) */
+        /* ------------------------------------------------------------------ */
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -10;
+            opacity: 0.8;
+        }
+
+        /* Pure CSS Nebula Effect */
+        .nebula {
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.25) 0%, rgba(139, 92, 246, 0) 60%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.2) 0%, rgba(236, 72, 153, 0) 60%),
+                radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0) 60%),
+                radial-gradient(circle at 60% 10%, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 60%);
+            background-size: 100% 100%;
+            animation: pulse-nebula 20s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulse-nebula {
+            0% { transform: scale(1) translateX(0) translateY(0); opacity: 0.8; }
+            50% { transform: scale(1.05) translateX(8px) translateY(5px); opacity: 1; }
+            100% { transform: scale(1) translateX(0) translateY(0); opacity: 0.8; }
+        }
+
+        /* Star fields */
+        .stars {
+            background-image: 
+                radial-gradient(1.5px 1.5px at 20% 30%, #fff, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 40% 70%, #e0e7ff, rgba(224, 231, 255, 0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: move-stars 100s linear infinite, twinkle 2s infinite alternate;
+        }
+        
+        .stars2 {
+            background-image: 
+                radial-gradient(1px 1px at 10% 90%, #fff, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 70% 30%, #a78bfa, rgba(167, 139, 250, 0));
+            background-repeat: repeat;
+            background-size: 150px 150px;
+            animation: move-stars 120s linear infinite, twinkle 3s infinite alternate;
+        }
+
+        .stars3 {
+            background-image: radial-gradient(1px 1px at 50% 50%, #fff, rgba(255, 255, 255, 0));
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            animation: twinkle 2.5s infinite alternate;
+        }
+        
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        /* ------------------------------------------------------------------ */
+        /* GENERAL CONTENT STYLES */
+        /* ------------------------------------------------------------------ */
+        @keyframes ring-pulse-anim {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.8;
+                stroke-opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+                stroke-opacity: 0;
+            }
+        }
+
+        .ring-pulse {
+            transform-origin: center;
+            animation: ring-pulse-anim 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        .ring-pulse-delay {
+            transform-origin: center;
+            animation: ring-pulse-anim 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 1.5s;
+        }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px) scale(1.01);
+        }
+
+        /* Rolling Eye Styling */
+        .eye-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .eye-container:hover {
+            transform: scale(1.1);
+        }
+
+        .eye {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border-radius: 50%;
+            border: 3px solid #8b5cf6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pupil {
+            width: 35%;
+            height: 35%;
+            background-color: #0f172a;
+            border-radius: 50%;
+            position: absolute;
+            transition: transform 0.05s ease-out;
+        }
+
+        /* Blinking Effect in Touch */
+        @keyframes blink {
+            0%, 20%, 100% { transform: scaleY(1); }
+            10%, 15% { transform: scaleY(0.1); }
+        }
+        .blinking-eye-o {
+            position: relative;
+            display: inline-block;
+            width: 0.75em;
+            height: 0.75em;
+            background-color: #a78bfa;
+            border-radius: 50%;
+            vertical-align: baseline;
+            animation: blink 3.5s infinite;
+            overflow: hidden;
+            margin: 0 0.08em;
+        }
+        .blinking-eye-o::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45%;
+            height: 45%;
+            background-color: #0d121c;
+            border-radius: 50%;
+        }
+
+        /* Buttons & Glass Cards */
+        .rover-btn {
+            background: linear-gradient(145deg, #1e293b, #0c1524);
+            border: 1.5px solid #6d28d9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 0 8px rgba(139, 92, 246, 0.2);
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 9999px;
+            color: #f3f4f6;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .rover-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.3);
+            border-color: #8b5cf6;
+            color: #ffffff;
+        }
+        
+        /* Floating Levitation Animation & Glowing Aura */
+        @keyframes float-levitate {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-14px) rotate(1.5deg);
+            }
+        }
+
+        @keyframes aura-pulse {
+            0% { opacity: 0.35; transform: scale(0.92); }
+            100% { opacity: 0.85; transform: scale(1.12); }
+        }
+
+        .profile-float-wrapper {
+            position: relative;
+            display: inline-block;
+            animation: float-levitate 5s ease-in-out infinite;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-float-wrapper:hover {
+            animation-play-state: paused;
+        }
+
+        .profile-float-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(236, 72, 153, 0.25) 50%, transparent 70%);
+            z-index: -1;
+            filter: blur(14px);
+            animation: aura-pulse 3s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        /* Flipping Photo Card Styles */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 16rem; 
+            height: 16rem; 
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
+        }
+
+        .flip-card-container:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 45px rgba(168, 85, 247, 0.9), 0 0 20px rgba(99, 102, 241, 0.7);
+        }
+
+        .flip-card-container:hover .flip-card-inner {
+            transform: rotateY(180deg); 
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            border-radius: 50%;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+        }
+
+        .flip-card-front {
+            background-color: #1e293b;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #111827, #4c1d95);
+            border: 2px solid #a855f7;
+        }
+
+        /* Floating Astronaut Styles & Hover Animation */
+        @keyframes astro-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(8deg);
+            }
+        }
+
+        .astro-hover-float {
+            animation: astro-float 4s ease-in-out infinite;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+        }
+
+        .astro-hover-float:hover {
+            transform: scale(1.25) rotate(-8deg);
+            filter: drop-shadow(0 0 18px rgba(167, 139, 250, 0.9));
+        }
+
+        .game-modal {
+            display: none;
+        }
+
+        .game-modal.is-open {
+            display: flex;
+        }
+
+        #gameCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d121c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline id="video-background">
+        <source src="background1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Background Layers (Nebula + Stars) -->
+    <div class="background-layer nebula"></div>
+    <div class="background-layer stars"></div>
+    <div class="background-layer stars2"></div>
+    <div class="background-layer stars3"></div>
+    
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/90 shadow-2xl sticky top-0 z-50 backdrop-blur-md border-b border-gray-800/60">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo with Animated Rings -->
+            <a href="#" class="text-3xl font-extrabold text-indigo-400 rounded-lg p-1 transition-colors duration-300 hover:text-indigo-300 relative flex items-center group">
+                
+                <div id="logo-ring-container" class="absolute left-1 top-1/2 -translate-y-1/2 w-10 h-10 flex justify-center items-center pointer-events-none z-0">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <circle class="ring-pulse" cx="50" cy="50" r="35" stroke="#8b5cf6" stroke-width="3" fill="none" stroke-linecap="round" />
+                        <circle class="ring-pulse-delay" cx="50" cy="50" r="35" stroke="#8b5cf6" stroke-width="3" fill="none" stroke-linecap="round" />
+                    </svg>
+                </div>
+
+                <span class="relative z-10 mr-3 text-white w-10 h-10 flex items-center justify-center rounded-full text-lg font-bold border-2 border-indigo-400/60 shadow-lg group-hover:border-indigo-300"
+                      style="text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); background: radial-gradient(circle at 70% 30%, #6366f1, #1e293b);">
+                    RA
+                </span>
+                <span class="relative z-10 font-extrabold tracking-tight text-xl text-white">Raksha Sri A</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-2 text-gray-300 font-medium text-sm">
+                <a href="#about" class="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-indigo-600/20 hover:text-indigo-300">About</a>
+                <a href="#research" class="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-indigo-600/20 hover:text-indigo-300">Research</a>
+                <a href="#publications" class="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-indigo-600/20 hover:text-indigo-300">Publications</a>
+                <a href="#skills" class="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-indigo-600/20 hover:text-indigo-300">Toolkit</a>
+                <button type="button" onclick="openGameModal()" class="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-purple-600/20 hover:text-purple-300 flex items-center gap-1.5"><i data-lucide="gamepad-2" class="w-4 h-4 text-purple-400"></i> AI Game</button>
+                <a href="#journey" class="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-indigo-600/20 hover:text-indigo-300">Journey</a>
+                <a href="#contact" class="px-3 py-2 rounded-lg bg-indigo-600/30 text-indigo-200 border border-indigo-500/40 hover:bg-indigo-600 hover:text-white transition-all">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 border-b border-gray-800 px-6 py-4 flex flex-col space-y-3">
+            <a href="#about" class="text-gray-300 hover:text-indigo-300 py-1">About</a>
+            <a href="#research" class="text-gray-300 hover:text-indigo-300 py-1">Research Case Studies</a>
+            <a href="#publications" class="text-gray-300 hover:text-indigo-300 py-1">Publications</a>
+            <a href="#skills" class="text-gray-300 hover:text-indigo-300 py-1">Toolkit</a>
+            <button type="button" onclick="openGameModal()" class="text-purple-400 hover:text-purple-300 py-1 font-semibold text-left flex items-center gap-2"><i data-lucide="gamepad-2" class="w-4 h-4"></i> AI Sandbox Game</button>
+            <a href="#journey" class="text-gray-300 hover:text-indigo-300 py-1">Academic Journey</a>
+            <a href="#contact" class="text-indigo-400 hover:text-indigo-300 py-1 font-semibold">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-[85vh] flex items-center py-12 md:py-20 relative z-10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-7/12 text-left min-w-0">
+                
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-300 text-xs font-semibold mb-6 shadow-lg backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Direct PhD Candidate & AI Researcher
+                </div>
+
+                <!-- Static Headline -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3">
+                    Architecting AI for
+                </h1>
+                
+                <!-- Zero-Shift Typewriter Container with Invisible Layout Spacer -->
+                <div class="relative inline-flex items-center mb-6 max-w-full overflow-hidden">
+                    <!-- Invisible Spacer: locks exact width & height of longest phrase so layout NEVER shifts -->
+                    <div class="opacity-0 font-extrabold text-lg sm:text-2xl md:text-4xl lg:text-5xl pointer-events-none select-none whitespace-nowrap py-1" aria-hidden="true">
+                        Reinforcement Learning Agents.
+                    </div>
+                    
+                    <!-- Absolutely Positioned Visible Typewriter -->
+                    <div class="absolute inset-0 flex items-center justify-start whitespace-nowrap overflow-hidden">
+                        <span id="typing-text" class="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400"></span>
+                        <span class="w-1 h-5 sm:h-7 md:h-8 lg:h-10 bg-purple-400 inline-block ml-1.5 animate-pulse rounded-full flex-shrink-0"></span>
+                    </div>
+                </div>
+
+                <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+                    Specializing in <span class="text-indigo-300 font-semibold">Deep Learning, Medical EEG Processing, and Reinforcement Learning</span> to build reliable, high-impact intelligent systems for healthcare and scientific discovery.
+                </p>
+
+                <!-- Hero Action Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6 max-w-xl"> 
+                    
+                    <a href="#research" class="group p-5 rounded-xl border border-indigo-500/40 bg-gray-900/80 hover:bg-gray-800/90 transition-all duration-300 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/20 flex items-start gap-4 text-left">
+                        <div class="p-3 rounded-lg bg-indigo-950/80 border border-indigo-500/30 text-indigo-400 group-hover:text-indigo-300 group-hover:scale-110 transition-transform">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white group-hover:text-indigo-300 flex items-center gap-1">
+                                Research Work <i data-lucide="arrow-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-1">Explore medical AI, CV, and RL case studies.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#contact" class="group p-5 rounded-xl border border-purple-500/40 bg-gray-900/80 hover:bg-gray-800/90 transition-all duration-300 hover:border-purple-400 hover:shadow-xl hover:shadow-purple-500/20 flex items-start gap-4 text-left">
+                        <div class="p-3 rounded-lg bg-purple-950/80 border border-purple-500/30 text-purple-400 group-hover:text-purple-300 group-hover:scale-110 transition-transform">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white group-hover:text-purple-300 flex items-center gap-1">
+                                Collaborate <i data-lucide="arrow-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-1">Open for academic research & joint projects.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Profile Interactive Flip Card -->
+            <div class="md:w-5/12 flex flex-col items-center justify-center">
+                <div class="profile-float-wrapper">
+                    <div id="profileFlipCard" class="flip-card-container">
+                        <div class="flip-card-inner">
+                            <img class="flip-card-front shadow-2xl" 
+                                 src="photo3.png" 
+                                 alt="Raksha Sri A Profile Photo">
+                            <div class="flip-card-back flex flex-col justify-center items-center p-6 text-center">
+                                <i data-lucide="sparkles" class="w-8 h-8 text-indigo-300 mb-2"></i>
+                                <p class="text-xl font-extrabold text-white">Raksha Sri A</p>
+                                <p class="text-xs font-semibold text-indigo-300 mt-1 uppercase tracking-wider">PhD Researcher</p>
+                                <p class="text-xs text-gray-300 mt-3 leading-relaxed">Focus: Biomedical Signals, Reinforcement Learning, Computer Vision & Explainable AI.</p>
+                                <span class="mt-4 text-[10px] bg-indigo-950/80 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">Hover/Tap to flip back</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-400 mt-4 flex items-center gap-1">
+                    <i data-lucide="rotate-3d" class="w-3.5 h-3.5 text-indigo-400"></i> Hover or tap card to view focus areas
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-900/80 py-20 relative z-10 border-y border-gray-800/80 backdrop-blur-sm">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+                    <i data-lucide="graduation-cap" class="w-8 h-8 text-indigo-400"></i>
+                    About My Research Focus
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="col-span-2 bg-gray-800/60 p-8 rounded-2xl border border-gray-700/60 shadow-xl space-y-4">
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed">
+                        I am <strong class="text-white">Raksha Sri A</strong>, an AI Researcher specializing in machine learning algorithms for biomedical signal processing, complex decision systems, and high-speed computer vision.
+                    </p>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Currently pursuing a <span class="text-indigo-300 font-semibold">Direct PhD</span>, my work centers on bridging fundamental deep learning research with scalable real-world deployments. I focus on developing robust models capable of processing temporal high-dimensional data (such as multi-channel EEG signals) and autonomous optimization via deep reinforcement learning.
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-2">
+                        <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-md text-xs font-medium">EEG Time-Series</span>
+                        <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-md text-xs font-medium">Deep Q-Learning</span>
+                        <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-md text-xs font-medium">Low-Light Object Detection</span>
+                        <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-md text-xs font-medium">Explainable AI (XAI)</span>
+                    </div>
+                </div>
+
+                <!-- Stats / Quick Highlights Column -->
+                <div class="space-y-4">
+                    <div class="bg-indigo-950/40 p-6 rounded-2xl border border-indigo-500/30 text-center">
+                        <span class="text-3xl font-extrabold text-indigo-400 block mb-1">Direct PhD</span>
+                        <span class="text-xs text-gray-300 font-medium">Research Scholar</span>
+                    </div>
+                    <div class="bg-purple-950/40 p-6 rounded-2xl border border-purple-500/30 text-center">
+                        <span class="text-3xl font-extrabold text-purple-400 block mb-1">93.5%</span>
+                        <span class="text-xs text-gray-300 font-medium">EEG Classification Accuracy</span>
+                    </div>
+                    <div class="bg-emerald-950/40 p-6 rounded-2xl border border-emerald-500/30 text-center">
+                        <span class="text-3xl font-extrabold text-emerald-400 block mb-1">60+ FPS</span>
+                        <span class="text-xs text-gray-300 font-medium">Real-Time Object Inference</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Case Studies / Portfolio Section -->
+    <section id="research" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+                    <i data-lucide="flask-conical" class="w-8 h-8 text-indigo-400"></i>
+                    Featured Research Case Studies
+                </h2>
+                <p class="text-gray-400 mt-2 max-w-xl mx-auto text-sm">Empirical studies, novel network architectures, and benchmark results.</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                
+                <!-- RESEARCH ITEM 1 -->
+                <div class="project-card bg-gray-900/90 rounded-2xl border border-indigo-500/40 shadow-2xl p-6 flex flex-col justify-between hover:border-indigo-400">
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-5 group">
+                            <img class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105" 
+                                 src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=600" 
+                                 alt="EEG Signal Diagnostics">
+                            <div class="absolute top-3 right-3 bg-indigo-950/90 text-indigo-300 text-xs px-2.5 py-1 rounded-full border border-indigo-500/40 font-mono">
+                                Medical AI
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">Biomedical AI: EEG-Based Neurological Diagnostics</h3>
+                        <p class="text-gray-300 text-sm mb-5 leading-relaxed">
+                            Engineered a hybrid Deep CNN-LSTM architecture for multichannel EEG time-series analysis to automatically detect neurological abnormalities with temporal precision.
+                        </p>
+
+                        <div class="space-y-2.5 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="brain" class="w-4 h-4 text-pink-400"></i> Domain:</span>
+                                <span class="font-medium text-white">Time-Series & Signal ML</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="gauge" class="w-4 h-4 text-emerald-400"></i> Benchmark:</span>
+                                <span class="font-mono text-emerald-300 font-semibold">Accuracy = $$93.5\%$$</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-indigo-400"></i> Stack:</span>
+                                <span class="font-medium text-gray-200">PyTorch, MNE-Python, SciPy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="openModal('eeg-modal')" class="rover-btn text-xs mt-6 w-full py-2.5">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> Read Full Abstract
+                    </button>
+                </div>
+
+                <!-- RESEARCH ITEM 2 -->
+                <div class="project-card bg-gray-900/90 rounded-2xl border border-purple-500/40 shadow-2xl p-6 flex flex-col justify-between hover:border-purple-400">
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-5 group">
+                            <img class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105" 
+                                 src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" 
+                                 alt="Reinforcement Learning">
+                            <div class="absolute top-3 right-3 bg-purple-950/90 text-purple-300 text-xs px-2.5 py-1 rounded-full border border-purple-500/40 font-mono">
+                                RL & Control
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">Decision Systems: RL for Dynamic Resource Allocation</h3>
+                        <p class="text-gray-300 text-sm mb-5 leading-relaxed">
+                            Formulated a Deep Q-Network (DQN) agent with prioritized experience replay to solve multi-objective dynamic resource distribution problems under environmental constraints.
+                        </p>
+
+                        <div class="space-y-2.5 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="leaf" class="w-4 h-4 text-yellow-400"></i> Domain:</span>
+                                <span class="font-medium text-white">Reinforcement Learning</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4 text-emerald-400"></i> Gain:</span>
+                                <span class="font-mono text-emerald-300 font-semibold">Efficiency = $$+18\%$$</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-indigo-400"></i> Stack:</span>
+                                <span class="font-medium text-gray-200">Stable-Baselines3, Gym, PyTorch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="openModal('rl-modal')" class="rover-btn text-xs mt-6 w-full py-2.5">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> Read Full Abstract
+                    </button>
+                </div>
+
+                <!-- RESEARCH ITEM 3 -->
+                <div class="project-card bg-gray-900/90 rounded-2xl border border-indigo-500/40 shadow-2xl p-6 flex flex-col justify-between hover:border-indigo-400">
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-5 group">
+                            <img class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105" 
+                                 src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=600" 
+                                 alt="Computer Vision">
+                            <div class="absolute top-3 right-3 bg-indigo-950/90 text-indigo-300 text-xs px-2.5 py-1 rounded-full border border-indigo-500/40 font-mono">
+                                Vision AI
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">Perception: Low-Light Real-Time Perception Pipeline</h3>
+                        <p class="text-gray-300 text-sm mb-5 leading-relaxed">
+                            Customized lightweight convolutional detection backbones with attention heads for high-framerate object localization in noisy, degraded illumination conditions.
+                        </p>
+
+                        <div class="space-y-2.5 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="eye" class="w-4 h-4 text-cyan-400"></i> Domain:</span>
+                                <span class="font-medium text-white">Computer Vision</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="zap" class="w-4 h-4 text-amber-400"></i> Speed:</span>
+                                <span class="font-mono text-amber-300 font-semibold">Inference $$\ge 60\text{ FPS}$$</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-indigo-400"></i> Stack:</span>
+                                <span class="font-medium text-gray-200">YOLOv8, OpenCV, TensorRT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="openModal('cv-modal')" class="rover-btn text-xs mt-6 w-full py-2.5">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> Read Full Abstract
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications & Preprints Section -->
+    <section id="publications" class="bg-gray-900/80 py-20 relative z-10 border-t border-gray-800">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+                    <i data-lucide="book-open-check" class="w-8 h-8 text-indigo-400"></i>
+                    Publications & Working Papers
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Paper 1 -->
+                <div class="p-6 bg-gray-800/50 rounded-xl border border-gray-700/60 hover:border-indigo-500/50 transition-colors">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">Preprint / Under Review</span>
+                        <span class="text-xs text-gray-400 font-mono">2024</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white hover:text-indigo-300 transition-colors">
+                        "Robust Multi-Channel EEG Representation Learning via Spatio-Temporal Attention Mechanisms"
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">
+                        <strong>Raksha Sri A.</strong>, et al.
+                    </p>
+                    <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                        Proposes a novel self-attention based temporal filter for pre-processing non-stationary EEG signals, demonstrating superior generalization across diverse patient cohorts.
+                    </p>
+                </div>
+
+                <!-- Paper 2 -->
+                <div class="p-6 bg-gray-800/50 rounded-xl border border-gray-700/60 hover:border-purple-500/50 transition-colors">
+                    <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800">Conference Proceedings</span>
+                        <span class="text-xs text-gray-400 font-mono">2023</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white hover:text-purple-300 transition-colors">
+                        "Deep Q-Networks with Reward Shaping for Dynamic Sensor Scheduling"
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">
+                        <strong>Raksha Sri A.</strong>, et al.
+                    </p>
+                    <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                        Investigates action space decomposition techniques to accelerate convergence in high-dimensional continuous reward landscapes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Toolkit Section -->
+    <section id="skills" class="py-20 relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+                    <i data-lucide="cpu" class="w-8 h-8 text-indigo-400"></i>
+                    Technical Toolkit
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Skill Category 1 -->
+                <div class="bg-gray-900/90 p-6 rounded-2xl border border-gray-800 shadow-xl hover:border-indigo-500/50 transition duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                        <i data-lucide="code" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Core Languages</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Python (Advanced), C++, R, SQL, LaTeX</p>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="bg-gray-900/90 p-6 rounded-2xl border border-gray-800 shadow-xl hover:border-indigo-500/50 transition duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">DL Frameworks</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">PyTorch, TensorFlow, Keras, Hugging Face</p>
+                </div>
+
+                <!-- Skill Category 3 -->
+                <div class="bg-gray-900/90 p-6 rounded-2xl border border-gray-800 shadow-xl hover:border-indigo-500/50 transition duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                        <i data-lucide="microscope" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Research Domains</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Reinforcement Learning, Medical AI, EEG Analysis, Computer Vision</p>
+                </div>
+
+                <!-- Skill Category 4 -->
+                <div class="bg-gray-900/90 p-6 rounded-2xl border border-gray-800 shadow-xl hover:border-indigo-500/50 transition duration-300 text-center">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                        <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Tools & Platforms</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Git, Docker, AWS/GCP, Linux, OpenCV, Pandas</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic & Research Journey Timeline -->
+    <section id="journey" class="bg-gray-900/80 py-20 relative z-10 border-t border-gray-800">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+                    <i data-lucide="milestone" class="w-8 h-8 text-indigo-400"></i>
+                    Academic Journey
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="relative border-l-2 border-indigo-500/40 ml-4 md:ml-32 space-y-10">
+                
+                <!-- Item 1 -->
+                <div class="relative pl-8">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 border-4 border-gray-900"></div>
+                    <span class="md:absolute md:-left-32 md:top-1 text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">Present</span>
+                    <h3 class="text-lg font-bold text-white">Direct PhD Candidate - AI & Machine Learning</h3>
+                    <p class="text-xs text-gray-400">Focus: Biomedical Signal Processing & Deep Reinforcement Learning</p>
+                    <p class="text-sm text-gray-300 mt-2">Conducting advanced research on temporal modeling of neural signals and scalable learning systems.</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-8">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-4 border-gray-900"></div>
+                    <span class="md:absolute md:-left-32 md:top-1 text-xs font-semibold text-purple-400 uppercase tracking-wider block mb-1">Previous</span>
+                    <h3 class="text-lg font-bold text-white">Graduate Research Assistant</h3>
+                    <p class="text-xs text-gray-400">AI & Intelligent Systems Lab</p>
+                    <p class="text-sm text-gray-300 mt-2">Developed computer vision algorithms and deep learning pipelines for high-throughput image and video analytics.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative z-10 bg-gray-900/90 border-t border-gray-800">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <!-- Heading Container with Floating Astronaut -->
+            <div class="inline-flex items-center justify-center gap-3 mb-4 flex-wrap sm:flex-nowrap">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">
+                    Get In T<span class="blinking-eye-o"></span>uch
+                </h2>
+                <img src="astro.jpeg"
+                     alt="Floating Astronaut"
+                     class="w-14 h-14 md:w-20 md:h-20 object-contain astro-hover-float cursor-pointer"
+                     onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e1b4b/a78bfa?text=Astro';">
+            </div>
+            <p class="text-gray-300 text-lg mb-10 max-w-xl mx-auto">
+                Interested in academic collaborations, joint research publications, or technical discussions? Feel free to reach out.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:raksha.sri.a@research.edu" class="rover-btn text-sm">
+                    <i data-lucide="mail" class="w-4 h-4"></i> Email Me
+                </a>
+                <a href="https://linkedin.com/in/rakshasri" target="_blank" rel="noopener noreferrer" class="rover-btn text-sm">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> Research Profile
+                </a>
+                <a href="#" onclick="alert('CV Download link configured here.'); return false;" class="rover-btn text-sm">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Interactive Rolling Eye Widget -->
+    <div class="eye-container" title="Eye tracks your mouse pointer">
+        <div class="eye">
+            <div class="pupil"></div>
+        </div>
+    </div>
+
+    <!-- Modal for Abstract Deep Dive -->
+    <div id="abstractModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[2000] hidden flex items-center justify-center p-4">
+        <div class="bg-gray-900 border border-indigo-500/40 rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-1 rounded-lg">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold text-white mb-3"></h3>
+            <div id="modalBody" class="text-gray-300 text-sm leading-relaxed space-y-4"></div>
+            <div class="mt-6 pt-4 border-t border-gray-800 text-right">
+                <button onclick="closeModal()" class="rover-btn text-xs py-2 px-5">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compact AI Game Dialog -->
+    <div id="gameModal" class="game-modal fixed inset-0 bg-black/80 backdrop-blur-md z-[2100] items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+        <div class="bg-gray-900 border border-purple-500/40 rounded-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto p-4 sm:p-6 relative shadow-2xl">
+            <button type="button" onclick="closeGameModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white p-1 rounded-lg" aria-label="Close AI game">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="text-center mb-4 pr-8">
+                <p class="text-xs font-semibold uppercase tracking-wider text-purple-300">Interactive AI Agent Sandbox</p>
+                <h2 id="gameModalTitle" class="text-2xl font-extrabold text-white">Neural Signal Runner</h2>
+                <p class="text-xs text-gray-400 mt-1">Collect signal nodes, dodge noise anomalies, or let the Q-Agent pilot the rover.</p>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3 bg-gray-950/80 p-3 rounded-xl border border-gray-800 text-xs">
+                <div class="flex items-center gap-4">
+                    <span>Score <strong id="gameScore" class="text-emerald-400 font-mono">0</strong></span>
+                    <span>Best <strong id="gameHighScore" class="text-amber-400 font-mono">0</strong></span>
+                    <span>Shield <strong id="gameHealth" class="text-emerald-400 font-mono">3</strong></span>
+                </div>
+                <button type="button" id="aiModeToggleBtn" onclick="toggleAIMode()" class="px-3 py-1.5 rounded-lg bg-purple-950/90 border border-purple-500/50 text-purple-300 font-semibold text-xs">Enable RL Auto-Pilot</button>
+            </div>
+            <div class="relative h-56 sm:h-72 bg-gray-950 rounded-xl overflow-hidden border border-gray-800">
+                <canvas id="gameCanvas"></canvas>
+                <div id="gameOverlay" class="absolute inset-0 bg-gray-950/85 flex flex-col justify-center items-center p-5 text-center">
+                    <h3 id="overlayTitle" class="text-xl font-bold text-white mb-2">Ready to launch?</h3>
+                    <p id="overlaySub" class="text-xs text-gray-300 max-w-sm mb-4">Use Left/Right and Up or Space to guide the rover.</p>
+                    <button type="button" onclick="startGame()" class="rover-btn text-xs px-5 py-2.5"><i data-lucide="play" class="w-4 h-4"></i> Launch Rover</button>
+                </div>
+            </div>
+            <div class="flex justify-center gap-2 mt-3">
+                <button type="button" id="btnLeft" class="rover-btn text-xs px-3 py-2"><i data-lucide="arrow-left" class="w-4 h-4"></i> Left</button>
+                <button type="button" id="btnJump" class="rover-btn text-xs px-3 py-2"><i data-lucide="arrow-up" class="w-4 h-4"></i> Jump</button>
+                <button type="button" id="btnRight" class="rover-btn text-xs px-3 py-2">Right <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-8 relative z-10 border-t border-gray-900 text-center text-xs">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 Raksha Sri A. All rights reserved. Built for AI & Scientific Innovation.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initialize Lucide Icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // 2. Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // 3. Rolling Eye Cursor Tracking Algorithm
+            const eyeContainer = document.querySelector('.eye-container');
+            const pupil = document.querySelector('.pupil');
+
+            if (eyeContainer && pupil) {
+                document.addEventListener('mousemove', (e) => {
+                    const rect = eyeContainer.getBoundingClientRect();
+                    const eyeCenterX = rect.left + rect.width / 2;
+                    const eyeCenterY = rect.top + rect.height / 2;
+
+                    const deltaX = e.clientX - eyeCenterX;
+                    const deltaY = e.clientY - eyeCenterY;
+
+                    const angle = Math.atan2(deltaY, deltaX);
+                    const distance = Math.min(Math.hypot(deltaX, deltaY), 14); // Limit max pupil offset
+
+                    const pupilX = Math.cos(angle) * distance;
+                    const pupilY = Math.sin(angle) * distance;
+
+                    pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+                });
+            }
+
+            // 4. Typewriter Effect Logic for Hero Title
+            const phrases = [
+                "Intelligent Data Systems.",
+                "Biomedical EEG Diagnostics.",
+                "Reinforcement Learning Agents.",
+                "Real-Time Computer Vision."
+            ];
+
+            let phraseIdx = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+            const typingSpeed = 90;
+            const deletingSpeed = 40;
+            const delayBetweenPhrases = 2000;
+            const targetElement = document.getElementById('typing-text');
+
+            function typeLoop() {
+                if (!targetElement) return;
+
+                const currentPhrase = phrases[phraseIdx];
+
+                if (isDeleting) {
+                    targetElement.textContent = currentPhrase.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    targetElement.textContent = currentPhrase.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+                if (!isDeleting && charIdx === currentPhrase.length) {
+                    currentSpeed = delayBetweenPhrases;
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                    currentSpeed = 300;
+                }
+
+                setTimeout(typeLoop, currentSpeed);
+            }
+
+            typeLoop();
+        });
+
+        // 5. Abstract Modal Content Management
+        const modalData = {
+            'eeg-modal': {
+                title: "Biomedical AI: EEG-Based Neurological Diagnostics",
+                body: `<p><strong>Abstract:</strong> Accurate diagnosis of neurological anomalies from electroencephalogram (EEG) recordings requires model robustness against high noise levels and individual variance. In this research, we designed a hybrid convolutional-recurrent network architecture paired with spatial attention layers.</p>
+                       <p>The model was trained on multi-channel EEG signals pre-processed with continuous wavelet transforms (CWT). Our validation yielded <strong>93.5% classification accuracy</strong>, outperforming baseline SVM and standard ResNet baselines on public benchmark clinical datasets.</p>`
+            },
+            'rl-modal': {
+                title: "Decision Systems: RL for Dynamic Resource Allocation",
+                body: `<p><strong>Abstract:</strong> Autonomous resource scheduling in unpredictable environments poses non-convex optimization challenges. We formulated this system as a Markov Decision Process (MDP) and deployed a Deep Q-Network with Double Q-learning and Prioritized Experience Replay.</p>
+                       <p>Simulations under fluctuating load conditions demonstrated an <strong>18% gain in resource retention and efficiency</strong> while maintaining real-time constraint boundaries.</p>`
+            },
+            'cv-modal': {
+                title: "Perception: Low-Light Real-Time Perception Pipeline",
+                body: `<p><strong>Abstract:</strong> Real-time vision systems often experience severe performance degradation in dynamic or low-light scenarios. We implemented a lightweight object detection model incorporating spatial attention heads and low-rank tensor decompositions.</p>
+                       <p>Optimized with NVIDIA TensorRT, the system achieves stable frame rates of <strong>60+ FPS</strong> on edge hardware with minimal loss in mean Average Precision (mAP).</p>`
+            }
+        };
+
+        function openModal(id) {
+            const modal = document.getElementById('abstractModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            if (modalData[id]) {
+                title.innerText = modalData[id].title;
+                body.innerHTML = modalData[id].body;
+                modal.classList.remove('hidden');
+                
+                // Re-render LaTeX inside the modal
+                if (typeof renderMathInElement === 'function') {
+                    renderMathInElement(body);
+                }
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('abstractModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        let gameState = {
+            running: false,
+            autoPilot: false,
+            score: 0,
+            health: 3,
+            highScore: Number(localStorage.getItem('raksha_portfolio_highscore') || 0),
+            frame: 0,
+            player: { x: 40, y: 0, width: 34, height: 20, velocityY: 0, jumping: false },
+            obstacles: [],
+            signals: [],
+            keys: { left: false, right: false, jump: false },
+            animationFrame: null
+        };
+
+        function openGameModal() {
+            const modal = document.getElementById('gameModal');
+            if (!modal) return;
+            modal.classList.add('is-open');
+            resizeGameCanvas();
+            updateGameHud();
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function closeGameModal() {
+            const modal = document.getElementById('gameModal');
+            if (modal) modal.classList.remove('is-open');
+            gameState.running = false;
+            if (gameState.animationFrame) cancelAnimationFrame(gameState.animationFrame);
+        }
+
+        function resizeGameCanvas() {
+            const canvas = document.getElementById('gameCanvas');
+            if (!canvas || !canvas.parentElement) return;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = Math.max(320, Math.floor(rect.width));
+            canvas.height = Math.max(220, Math.floor(rect.height));
+            gameState.player.y = canvas.height - 42 - gameState.player.height;
+        }
+
+        function updateGameHud() {
+            const score = document.getElementById('gameScore');
+            const highScore = document.getElementById('gameHighScore');
+            const health = document.getElementById('gameHealth');
+            const toggle = document.getElementById('aiModeToggleBtn');
+            if (score) score.textContent = gameState.score;
+            if (highScore) highScore.textContent = gameState.highScore;
+            if (health) health.textContent = gameState.health;
+            if (toggle) toggle.textContent = gameState.autoPilot ? 'RL Auto-Pilot ON' : 'Enable RL Auto-Pilot';
+        }
+
+        function toggleAIMode() {
+            gameState.autoPilot = !gameState.autoPilot;
+            updateGameHud();
+        }
+
+        function startGame() {
+            const canvas = document.getElementById('gameCanvas');
+            const overlay = document.getElementById('gameOverlay');
+            if (!canvas) return;
+            resizeGameCanvas();
+            gameState.running = true;
+            gameState.score = 0;
+            gameState.health = 3;
+            gameState.frame = 0;
+            gameState.obstacles = [];
+            gameState.signals = [];
+            gameState.player.x = Math.floor(canvas.width * 0.16);
+            gameState.player.velocityY = 0;
+            gameState.player.jumping = false;
+            if (overlay) overlay.classList.add('hidden');
+            updateGameHud();
+            if (gameState.animationFrame) cancelAnimationFrame(gameState.animationFrame);
+            gameLoop();
+        }
+
+        function gameLoop() {
+            if (!gameState.running) return;
+            updateGame();
+            renderGame();
+            gameState.animationFrame = requestAnimationFrame(gameLoop);
+        }
+
+        function updateGame() {
+            const canvas = document.getElementById('gameCanvas');
+            const player = gameState.player;
+            const ground = canvas.height - 42;
+            gameState.frame += 1;
+
+            if (gameState.autoPilot) {
+                const nextObstacle = gameState.obstacles.find((item) => item.x > player.x && item.x < player.x + 130);
+                gameState.keys.jump = Boolean(nextObstacle && nextObstacle.x - player.x < 90);
+                gameState.keys.right = !nextObstacle;
+                gameState.keys.left = false;
+            }
+
+            if (gameState.keys.left) player.x -= 4;
+            if (gameState.keys.right) player.x += 4;
+            player.x = Math.max(10, Math.min(canvas.width - player.width - 10, player.x));
+            if (gameState.keys.jump && !player.jumping) {
+                player.velocityY = -10;
+                player.jumping = true;
+            }
+            player.velocityY += 0.5;
+            player.y += player.velocityY;
+            if (player.y >= ground - player.height) {
+                player.y = ground - player.height;
+                player.velocityY = 0;
+                player.jumping = false;
+            }
+            gameState.keys.jump = false;
+
+            if (gameState.frame % 55 === 0) {
+                if (Math.random() < 0.42) {
+                    gameState.obstacles.push({ x: canvas.width + 10, y: ground - 24, width: 20, height: 24 });
+                } else {
+                    gameState.signals.push({ x: canvas.width + 10, y: ground - 40 - Math.random() * 55, width: 14, height: 14 });
+                }
+            }
+
+            gameState.obstacles.forEach((item) => { item.x -= 3.4; });
+            gameState.signals.forEach((item) => { item.x -= 3.1; });
+            gameState.obstacles = gameState.obstacles.filter((item) => item.x > -30);
+            gameState.signals = gameState.signals.filter((item) => item.x > -30);
+
+            for (let index = gameState.obstacles.length - 1; index >= 0; index -= 1) {
+                if (isColliding(player, gameState.obstacles[index])) {
+                    gameState.obstacles.splice(index, 1);
+                    gameState.health -= 1;
+                    updateGameHud();
+                    if (gameState.health <= 0) endGame();
+                }
+            }
+            for (let index = gameState.signals.length - 1; index >= 0; index -= 1) {
+                if (isColliding(player, gameState.signals[index])) {
+                    gameState.signals.splice(index, 1);
+                    gameState.score += 10;
+                    updateGameHud();
+                }
+            }
+        }
+
+        function isColliding(first, second) {
+            return first.x < second.x + second.width && first.x + first.width > second.x && first.y < second.y + second.height && first.y + first.height > second.y;
+        }
+
+        function renderGame() {
+            const canvas = document.getElementById('gameCanvas');
+            const context = canvas.getContext('2d');
+            const ground = canvas.height - 42;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = '#111827';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.strokeStyle = '#374151';
+            context.beginPath();
+            context.moveTo(0, ground);
+            context.lineTo(canvas.width, ground);
+            context.stroke();
+            context.fillStyle = gameState.autoPilot ? '#c084fc' : '#818cf8';
+            context.fillRect(gameState.player.x, gameState.player.y, gameState.player.width, gameState.player.height);
+            context.fillStyle = '#f8fafc';
+            context.fillRect(gameState.player.x + 23, gameState.player.y + 4, 6, 6);
+            context.fillStyle = '#fb7185';
+            gameState.obstacles.forEach((item) => context.fillRect(item.x, item.y, item.width, item.height));
+            context.fillStyle = '#34d399';
+            gameState.signals.forEach((item) => {
+                context.beginPath();
+                context.arc(item.x + item.width / 2, item.y + item.height / 2, item.width / 2, 0, Math.PI * 2);
+                context.fill();
+            });
+        }
+
+        function endGame() {
+            gameState.running = false;
+            if (gameState.score > gameState.highScore) {
+                gameState.highScore = gameState.score;
+                localStorage.setItem('raksha_portfolio_highscore', String(gameState.highScore));
+            }
+            const title = document.getElementById('overlayTitle');
+            const sub = document.getElementById('overlaySub');
+            const overlay = document.getElementById('gameOverlay');
+            if (title) title.textContent = 'Simulation Ended';
+            if (sub) sub.textContent = `Signal harvest score: ${gameState.score} points.`;
+            if (overlay) overlay.classList.remove('hidden');
+            updateGameHud();
+        }
+
+        function setGameKey(key, value) {
+            gameState.keys[key] = value;
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'ArrowLeft' || event.code === 'KeyA') setGameKey('left', true);
+            if (event.code === 'ArrowRight' || event.code === 'KeyD') setGameKey('right', true);
+            if (event.code === 'ArrowUp' || event.code === 'KeyW' || event.code === 'Space') setGameKey('jump', true);
+            if (event.code === 'Escape') closeGameModal();
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.code === 'ArrowLeft' || event.code === 'KeyA') setGameKey('left', false);
+            if (event.code === 'ArrowRight' || event.code === 'KeyD') setGameKey('right', false);
+        });
+
+        window.addEventListener('resize', resizeGameCanvas);
+        window.addEventListener('load', () => {
+            ['btnLeft', 'btnRight'].forEach((id) => {
+                const button = document.getElementById(id);
+                const key = id === 'btnLeft' ? 'left' : 'right';
+                if (!button) return;
+                button.addEventListener('pointerdown', () => setGameKey(key, true));
+                button.addEventListener('pointerup', () => setGameKey(key, false));
+                button.addEventListener('pointerleave', () => setGameKey(key, false));
+            });
+            const jumpButton = document.getElementById('btnJump');
+            if (jumpButton) jumpButton.addEventListener('pointerdown', () => setGameKey('jump', true));
+        });
+    </script>
+</body>
+</html>
